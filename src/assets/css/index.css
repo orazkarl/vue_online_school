@@ -1,0 +1,41 @@
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.container {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+/* a {
+  text-decoration: none !important;
+
+} */
+
+.border-none {
+  border: none;
+}
+p, span {
+  font-size: 25px;
+}
+.fa {
+  margin-right: 15px;
+}
+.fa-file-pdf-o {
+  color: red;
+}
+.fa-users {
+  color: green;
+}
