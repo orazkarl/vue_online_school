@@ -59,8 +59,9 @@
         },
         methods: {
             async loadCourse() {
+                const headers = { "Authorization": "Token " + localStorage.getItem("auth_token") };
                 this.course = await fetch(
-                    `${this.$store.getters.getServerUrl}/api/discipline/${this.id}`
+                    `${this.$store.getters.getServerUrl}/api/discipline/${this.id}`, {headers}
                 ).then(response => response.json())
             }
 

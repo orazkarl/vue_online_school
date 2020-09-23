@@ -50,8 +50,9 @@
         },
         methods: {
             async loadListDiscipline() {
+                const headers = { "Authorization": "Token " + localStorage.getItem("auth_token") };
                 this.listDiscipline = await fetch(
-                    `${this.$store.getters.getServerUrl}/api/discipline/`
+                    `${this.$store.getters.getServerUrl}/api/discipline`, {headers}
                 ).then(response => response.json())
             },
             goTo(id) {
