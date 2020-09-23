@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container text-center">
+    <div class="container text-center" >
         <!--        <Notification :message="notification.message" :type="notification.type" v-if="notification.message"/>-->
         <h2 v-if="wrongCred">Wrong credentials entered!. Please enter your correct details.</h2>
         <form class="form-signin" v-on:submit.prevent="loginUser">
@@ -29,6 +29,13 @@
         components: {
             Notification
         },
+        computed: {
+            auth() {
+                if (localStorage.getItem("auth_token")) {
+                    return true
+                }
+            }
+        },
         data() {
             return {
                 email: '',
@@ -51,6 +58,7 @@
                     .then(() => {
                         this.wrongCred = false
                         this.$router.push({name: 'Home'})
+                        window.location = '/'
                     })
                     .catch(err => {
                         console.log(err)

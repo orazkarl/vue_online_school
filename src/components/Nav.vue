@@ -9,8 +9,9 @@
             <a class="p-2 text-dark" href="#">Pricing</a> -->
         </nav>
         <!--        <a class="btn btn-outline-primary" href="/login">Войти</a>-->
-        <button v-if="auth_token==null" @click="goLogin()">Вход</button>
-        <button v-if="auth_token!=null" @click=" logout()">Выход</button>
+
+        <button v-if="!auth" @click="goLogin()" class="btn btn-primary">Вход</button>
+        <button v-else @click=" logout()"class="btn btn-primary" >Выход</button>
 
 
     </div>
@@ -21,15 +22,21 @@
 
     export default {
         name: "Nav",
-        computed: mapState(['auth_token']),
+        computed: {
+            auth() {
+                if (localStorage.getItem("auth_token")) {
+                    return true
+                }
+            }
+        },
         methods: {
             goLogin() {
                 this.$router.push({name: "Login"})
 
             },
             logout() {
-                sessionStorage.removeItem("auth_token")
-                window.location = '/'
+                localStorage.removeItem("auth_token")
+                window.location = '/login'
             },
 
         },
