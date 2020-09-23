@@ -13,6 +13,7 @@
     import Nav from "./components/Nav";
 
     export default {
-        components: {Nav}
+        components: {Nav},
+
     }
 </script>

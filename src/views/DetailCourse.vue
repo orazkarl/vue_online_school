@@ -2,15 +2,12 @@
     <div class="container-fluid col-md-10">
         <div class="card">
             <div class="card-header">
-                <h1>Python Programming (Orazali Karl) 2020-2021/1</h1>
+                <h1>{{course.discipline_name}}</h1>
             </div>
             <div class="card-body">
                 <div class="list-group">
                     <div class="list-group-item">
-                        <p>На практике научитесь писать программы и разрабатывать веб-приложения с индивидуальной
-                            помощью от наставника.
-                            За 12 месяцев станете востребованным разработчиком, даже если вы новичок в
-                            программировании.</p>
+                        <p v-html="course.discipline_description"></p>
                         <div class="list-group">
                             <div class="list-group-item border-none">
                                 <a href="#"><span><i class="fa fa-lg fa-folder"></i> Материалы</span></a>
@@ -50,7 +47,24 @@
 
 <script>
     export default {
-        name: "DetailCourse"
+        name: "DetailCourse",
+        props: ['id'],
+        data() {
+            return {
+                course: {}
+            }
+        },
+        created() {
+            this.loadCourse()
+        },
+        methods: {
+            async loadCourse() {
+                this.course = await fetch(
+                    `${this.$store.getters.getServerUrl}/api/discipline/${this.id}`
+                ).then(response => response.json())
+            }
+
+        }
     }
 </script>
 
