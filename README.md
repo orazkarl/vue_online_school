@@ -1,4 +1,4 @@
-# vue_online_school
+# Front-end Online School System
 
 ## Project setup
 ```
